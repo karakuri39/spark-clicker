@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>スパーク・クリッカー</title>
+
+  <!-- style.css が見た目を担当する -->
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- Google Fonts（外部サイトから読み込むだけなので、自分のホスティング環境からでも問題なく使える） -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;800&family=Inter:wght@400;500;600&display=swap"
+    rel="stylesheet"
+  />
+</head>
+<body>
+  <main class="game">
+    <header class="game__header">
+      <p class="game__label">保有エネルギー</p>
+      <!-- id を付けた要素は JavaScript から document.getElementById() で
+           つかまえて中身を書き換える。HTML はあくまで「初期状態の器」 -->
+      <p class="game__score" id="score">0</p>
+      <p class="game__rate" id="rate">毎秒 +0</p>
+    </header>
+
+    <!-- クリック対象のボタン。button 要素にしておくと
+         キーボード操作やスクリーンリーダーにも自然に対応できる -->
+    <button class="spark" id="sparkButton" aria-label="クリックしてエネルギーを生成する">
+      <span class="spark__ring"></span>
+      <span class="spark__core">⚡</span>
+    </button>
+    <p class="game__hint">クリック、またはボタンにフォーカスしてEnterキー</p>
+
+    <section class="shop">
+      <h2 class="shop__title">アップグレード</h2>
+      <!-- 中身は空にしておき、script.js が起動時に動的に生成する -->
+      <ul class="shop__list" id="shopList"></ul>
+    </section>
+
+    <footer class="game__footer">
+      <button class="reset" id="resetButton">セーブデータをリセット</button>
+    </footer>
+  </main>
+
+  <!-- script.js は必ず HTML の一番最後に置く。
+       こうすることで、JS が動き出す時点で上の要素が
+       すべて出来上がっていることが保証される -->
+  <script src="script.js"></script>
+</body>
+</html>
